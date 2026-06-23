@@ -27,6 +27,6 @@ public class LivroRepositorio {
 				return livro;
 			}
 		}
-		return null;
+		throw new LivroNaoEncontradoException();
 	}
 }

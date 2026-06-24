@@ -41,7 +41,11 @@ public class LivroResource {
 	@POST
 	@Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	public Response criaLivro(Livro livro) {
-		livroRepositorio.adicionaLivro(livro);
+		try {
+			livroRepositorio.adicionaLivro(livro);
+		} catch(LivroExistenteException e) {
+			throw new WebApplicationException(Status.CONFLICT);
+		}
 		
 		URI uriLocation = UriBuilder.fromPath("livro/{isbn}").build(livro.getIsbn());
 		

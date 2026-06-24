@@ -29,4 +29,8 @@ public class LivroRepositorio {
 		}
 		throw new LivroNaoEncontradoException();
 	}
+	
+	public void adicionaLivro(Livro livro) {
+		livros.put(livro.getId(), livro);
+	}
 }

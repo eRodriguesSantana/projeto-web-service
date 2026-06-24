@@ -17,7 +17,7 @@ import javax.ws.rs.core.UriBuilder;
 @Path("livro")
 public class LivroResource {
 
-	private static LivroRepositorio livroRepositorio = new LivroRepositorio();
+	private LivroRepositorio livroRepositorio = LivroRepositorio.getInstance();
 
 	@GET
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })

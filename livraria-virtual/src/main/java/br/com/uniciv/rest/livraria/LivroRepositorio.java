@@ -7,9 +7,18 @@ import java.util.Map;
 
 public class LivroRepositorio {
 
-	private static Map<Long, Livro> livros = new HashMap<>();
+	private Map<Long, Livro> livros = new HashMap<>();
 	
-	public LivroRepositorio() {
+	private static LivroRepositorio repo;
+	
+	public static LivroRepositorio getInstance() {
+		if(repo == null) {
+			repo = new LivroRepositorio();
+		}
+		return repo;
+	}
+	
+	private LivroRepositorio() {
 		if(livros.isEmpty()) {
 			Livro livro1 = new Livro(1L, "Livro A", "ISBN-1234", "Genero A", 23.99, "Autor 1");
 			Livro livro2 = new Livro(2L, "Livro B", "ISBN-5678", "Genero B", 24.99, "Autor 2");
@@ -37,5 +46,12 @@ public class LivroRepositorio {
 			throw new LivroExistenteException();
 		}
 		livros.put(livro.getId(), livro);
+	}
+	
+	public void atualizaLivro(Livro livro) {
+		if(livros.containsKey(livro.getId())) {
+			livros.put(livro.getId(), livro);
+		}
+		throw new LivroNaoEncontradoException();
 	}
 }

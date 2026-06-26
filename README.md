@@ -4,4 +4,4 @@
 <h3>Ferramentas utilizadas:</h3>
 Spring Tools Suite 5<br>
 Java 25<br>
-Maven 3.9.15
+Maven 3.9
